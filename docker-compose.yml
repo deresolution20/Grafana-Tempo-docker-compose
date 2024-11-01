@@ -1,0 +1,26 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - '3000:3000'
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - tempo
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./tempo-datasource.yml:/etc/grafana/provisioning/datasources/tempo-datasource.yml
+  tempo:
+    image: grafana/tempo:latest
+    ports:
+      - '4318:4318'   # OTLP HTTP receiver port
+      - '3100:3100'   # Tempo's query port
+    command: ["-config.file=/etc/tempo.yaml"]
+    volumes:
+      - ./tempo.yaml:/etc/tempo.yaml:ro
+      - tempo-data:/tmp/tempo
+
+volumes:
+  grafana-data:
+  tempo-data:

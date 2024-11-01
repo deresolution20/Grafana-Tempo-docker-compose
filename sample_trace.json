@@ -1,0 +1,50 @@
+{
+    "resourceSpans": [
+      {
+        "resource": {
+          "attributes": [
+            {
+              "key": "service.name",
+              "value": { "stringValue": "test-service" }
+            }
+          ]
+        },
+        "scopeSpans": [
+          {
+            "scope": {
+              "name": "test-instrumentation",
+              "version": "1.0.0"
+            },
+            "spans": [
+              {
+                "traceId": "00000000000000000000000000000001",
+                "spanId": "0000000000000001",
+                "name": "handle watchdog message",
+                "kind": "SPAN_KIND_INTERNAL",
+                "startTimeUnixNano": 1698876000000000000,
+                "endTimeUnixNano": 1698876001000000000,
+                "attributes": [
+                  {
+                    "key": "ams.watchdog.message_type",
+                    "value": { "stringValue": "hello" }
+                  },
+                  {
+                    "key": "ams.ds.ids",
+                    "value": {
+                      "arrayValue": {
+                        "values": [
+                          { "stringValue": "ds_uuid1" },
+                          { "stringValue": "ds_uuid2" }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
